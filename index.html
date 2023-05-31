@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style></style>
+    <script>
+      !(function () {
+        let e = document.createElement("script"),
+          t = document.head || document.getElementsByTagName("head")[0];
+        (e.src =
+          "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+          // Replace 1.x.x with the version that you want
+          (e.async = !0),
+          (e.onload = () => {
+            window.WebChat.default(
+              {
+                // bot should initiate the conversation with the user when the page loads
+
+                initPayload: "/get_started",
+                customData: { language: "en" },
+                socketUrl: "http://localhost:5005",
+                title: "Chatbot",
+                inputTextFieldHint: "Type a message...",
+                showMessageDate: true,
+                // clear the messages when the chatbot is closed
+                showCloseButton: true,
+                hideWhenNotConnected: true,
+                // connectOn: "open",
+                // when user clicks on the chatbot icon, the chatbot will pop up and say Welcome, how can I help you?
+                // embedded: true,
+                params: {
+                  storage: "session",
+                },
+                // when user loads the page, the bot says first message automatically without clicking on the chatbot icon chatbot will pop up and say Welcome, how can I help you?
+
+                // clear the chat history when the chatbot is closed
+                onSocketEvent: {
+                  close: () => {
+                    console.log("the socket closed");
+                  },
+                },
+
+                // load action server function and run it
+
+                customActions: {
+                  action_greet: () => {
+                    return new Promise((resolve) => {
+                      setTimeout(() => {
+                        resolve({
+                          text: "Hello, I am a chatbot. How can I help you?",
+                          // custom: "payload", // arbitrary custom data. Stay minimal as this will be added to the socket
+                        });
+                      }, 1000);
+                    });
+                  },
+                },
+              },
+              null
+            );
+          }),
+          t.insertBefore(e, t.firstChild);
+      })();
+    </script>
+  </body>
+</html>

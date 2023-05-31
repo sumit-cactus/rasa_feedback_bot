@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-feature",
+      "2": "I-feature",
+      "3": "L-feature",
+      "4": "U-feature",
+      "5": "B-improvement",
+      "6": "I-improvement",
+      "7": "L-improvement",
+      "8": "U-improvement",
+      "9": "B-rating",
+      "10": "I-rating",
+      "11": "L-rating",
+      "12": "U-rating",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-feature": 1,
+      "I-feature": 2,
+      "L-feature": 3,
+      "U-feature": 4,
+      "B-improvement": 5,
+      "I-improvement": 6,
+      "L-improvement": 7,
+      "U-improvement": 8,
+      "B-rating": 9,
+      "I-rating": 10,
+      "L-rating": 11,
+      "U-rating": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

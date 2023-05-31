@@ -1,0 +1,37 @@
+version: "3.1"
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: Say 'Welcome' anytime the user says 'thank you'
+    steps:
+      - intent: thank_you
+      - action: utter_welcome
+
+  - rule: Activate feedback form
+    steps:
+      - intent: feedback
+      - action: feedback_form
+      - active_loop: feedback_form
+
+      
+
+  - rule: Submit feedback form
+    condition:
+      - active_loop: feedback_form
+    steps:
+      - action: feedback_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_submit
+    
+
